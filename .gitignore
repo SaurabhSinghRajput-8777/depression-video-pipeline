@@ -7,9 +7,15 @@ data/processed/*
 !data/processed/.gitkeep
 data/metadata/*
 !data/metadata/.gitkeep
+data/debug/*
+!data/debug/.gitkeep
 logs/
 .env
 
 # Internal planning and prompt documents
+docs/ARCHITECTURE.md
+docs/ASSUMPTIONS.md
+docs/DESIGN_DECISIONS.md
 docs/IMPLEMENTATION_PLAN.md
 docs/PHASE_01_VIDEO_PREPROCESSING_PIPELINE.md
+docs/PHASE_02_FACE_EXTRACTION_ARCHITECTURE.md

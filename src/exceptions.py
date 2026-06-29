@@ -23,6 +23,11 @@ __all__ = [
     "FrameExtractionError",
     "GrayscaleConversionError",
     "ImagePreprocessingError",
+    "FaceProcessingError",
+    "FaceNotFoundError",
+    "FaceValidationError",
+    "FaceQualityError",
+    "FaceAlignmentError",
     "MetadataWriteError",
 ]
 
@@ -68,6 +73,26 @@ class GrayscaleConversionError(FrameProcessingError):
 
 class ImagePreprocessingError(FrameProcessingError):
     """Failure during crop/resize operations."""
+    pass
+
+class FaceProcessingError(PipelineError):
+    """Base class for face extraction pipeline errors."""
+    pass
+
+class FaceNotFoundError(FaceProcessingError):
+    """Raised when no face is detected in the frame."""
+    pass
+
+class FaceValidationError(FaceProcessingError):
+    """Raised when a detected face fails validation rules."""
+    pass
+
+class FaceQualityError(FaceProcessingError):
+    """Raised when a valid face fails image quality standards (e.g., blur)."""
+    pass
+
+class FaceAlignmentError(FaceProcessingError):
+    """Raised when affine alignment fails."""
     pass
 
 class MetadataWriteError(PipelineError):
