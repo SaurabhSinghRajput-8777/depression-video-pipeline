@@ -4,11 +4,24 @@
 This repository contains a modular, research-grade video preprocessing pipeline designed for transforming raw MP4 video data into standardized frame sequences. It is engineered with reproducibility, strict memory management (via streaming), and robust error handling in mind, ensuring a pristine data ingest for downstream machine learning applications.
 
 ## 2. Research Motivation
+**Why this exists:**
+Most depression-detection repositories focus on model architectures while treating preprocessing as a black box. This project aims to build a reproducible, auditable preprocessing foundation before introducing facial analysis and machine learning models. 
+
 In affective computing and depression detection tasks, the quality of the preprocessing pipeline dictates the ceiling of the machine learning model's performance. Deep neural networks operating on noisy, incorrectly formatted, or poorly tracked datasets yield inconsistent and unreliable results. This pipeline aims to establish a strictly versioned, highly observable, and defensively programmed foundation, guaranteeing that the inputs provided to the deep learning models are standardized and auditable.
 
 ## 3. Pipeline Architecture
 The architecture is structured sequentially, avoiding centralized god-classes and relying on single-responsibility modules coordinated by a thin orchestrator:
-`VideoReader` -> `FPSExtractor` -> `FrameExtractor` -> `GrayscaleConverter` -> `ImagePreprocessor` -> `MetadataLogger`
+
+```mermaid
+graph LR
+    A[MP4 Video] --> B[Video Reader]
+    B --> C[FPS Extractor]
+    C --> D[Frame Extractor]
+    D --> E[Grayscale Converter]
+    E --> F[Image Preprocessor]
+    F --> G[Processed Frames]
+    F --> H[Metadata Logger]
+```
 
 Data is passed between these stages using a strictly slotted `FrameRecord` dataclass, ensuring that crucial temporal metadata travels with the pixel data without massive memory overhead.
 
