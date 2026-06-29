@@ -9,3 +9,7 @@ data/metadata/*
 !data/metadata/.gitkeep
 logs/
 .env
+
+# Internal planning and prompt documents
+docs/IMPLEMENTATION_PLAN.md
+docs/PHASE_01_VIDEO_PREPROCESSING_PIPELINE.md
